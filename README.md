@@ -55,7 +55,7 @@ server.js
 ### 1. Cloner le projet
 
 ```bash
-git clone <url-du-repo>
+git clone https://github.com/meladam20/easytransfert-api-rest.git
 cd easytransfert-api-rest
 ```
 
