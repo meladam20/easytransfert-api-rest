@@ -3,6 +3,8 @@
  * -------
  * Configuration de l’application Express.
  */
+const cors = require('cors');
+
 
 const express = require('express');
 
@@ -19,6 +21,13 @@ app.use(express.json());
  */
 const userRoutes = require('./routes/User.routes.js');
 const transactionRoutes = require('./routes/Transaction.routes');
+
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 
 /**
