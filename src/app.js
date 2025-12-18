@@ -1,3 +1,4 @@
+
 /**
  * app.js
  * -------
@@ -10,6 +11,12 @@ const express = require('express');
 
 const app = express();
 
+app.use((req, res, next) => {
+  console.log("🔥 INCOMING:", req.method, req.url);
+  next();
+});
+
+
 /**
  * Middleware global :
  * Permet à Express de lire le JSON envoyé par le client
@@ -19,8 +26,8 @@ app.use(express.json());
 /**
  * Import des routes
  */
-const userRoutes = require('./routes/User.routes.js');
-const transactionRoutes = require('./routes/Transaction.routes');
+const userRoutes = require('./routes/user.routes');
+const transactionRoutes = require('./routes/transaction.routes');
 
 
 app.use(
@@ -46,6 +53,12 @@ app.use('/transactions', transactionRoutes);
 app.get('/', (req, res) => {
   res.json({ message: 'API Express fonctionnelle' });
 });
+
+app.use((req, res, next) => {
+  console.log("REQ:", req.method, req.url);
+  next();
+});
+
 
 /**
  * Middleware global de gestion des erreurs

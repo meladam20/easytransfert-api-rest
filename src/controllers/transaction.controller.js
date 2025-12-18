@@ -17,6 +17,7 @@ const createTransaction = async (req, res, next) => {
      * Données envoyées par le client
      */
     const { amount, status, user } = req.body;
+    
 
     /**
      * RÈGLE MÉTIER :

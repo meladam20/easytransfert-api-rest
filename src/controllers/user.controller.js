@@ -45,8 +45,37 @@ const createUser = async (req, res, next) => {
 };
 
 /**
+ * GET /users
+ * Récupère la liste des utilisateurs
+ */
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+
+    /**
+     * Normalisation de la réponse API
+     * - id au lieu de _id
+     * - pas de données sensibles
+     */
+    const formattedUsers = users.map((user) => ({
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    }));
+
+    res.status(200).json(formattedUsers);
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la récupération des utilisateurs",
+    });
+  }
+};
+
+
+/**
  * Export des méthodes du controller
  */
 module.exports = {
   createUser,
+  getAllUsers,
 };

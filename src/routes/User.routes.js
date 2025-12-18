@@ -21,6 +21,12 @@ const userController = require('../controllers/user.controller');
  */
 router.post('/', userController.createUser);
 
+
+/**
+ * GET /users
+ */
+router.get("/", userController.getAllUsers);
+
 /**
  * Export du router
  * Il sera utilisé dans app.js
